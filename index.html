@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advanced Eye Care</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1d1d1f;
+            background-color: #fff;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        :root {
+            --primary: #0071e3;  /* Apple Blue */
+            --primary-dark: #004990;
+            --secondary: #f5f5f7; /* Light Gray Background */
+            --accent: #8e8e93;    /* Medium Gray Text */
+            --dark: #1d1d1f;      /* Near Black */
+            --light: #ffffff;      /* White */
+        }
+        .container {
+            max-width: 1200px; /* Consistent max-width */
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95); /* Glassmorphism effect - more subtle*/
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+        }
+        .navbar-brand {
+            color: var(--dark) !important;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+        .navbar-brand:hover {
+            color: var(--primary) !important;
+        }
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 0.75rem 1.2rem;
+            font-size: 1rem;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+            background-color: transparent; /* No background on hover */
+        }
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+            background-size: cover;
+            width: 24px;
+            height: 24px;
+        }
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 113, 227, 0.25); /* Apple Blue focus ring */
+        }
+        .nav-item {
+            margin-right: 0.5rem; /* Reduced right margin */
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://source.unsplash.com/1600x900/?eye,ophthalmology') no-repeat center center;
+            background-size: cover;
+            height: 85vh; /* Reduced height for better flow */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark); /* Dark text for better contrast on image */
+        }
+        #hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.4); /* Slightly lighter overlay */
+        }
+        #hero .hero-content {
+            position: relative;
+            z-index5: 2;
+            max-width: 900px; /* Slightly wider text area */
+            margin: 0 auto;
+        }
+        #hero h1 {
+            font-size: 4rem; /* Larger heading */
+            font-weight: 700;  /* Use Inter's bold */
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: var(--dark);
+        }
+        #hero p {
+            font-size: 1.3rem; /* Slightly larger body text */
+            margin-bottom: 2.5rem; /* Increased margin */
+            color: var(--dark);
+        }
+        #hero .btn-custom {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin: 6rem 0 4rem;
+            text-align: center;
+        }
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+            position: relative; /* For the underline */
+            display: inline-block; /* Needed for absolute positioning of pseudo-element */
+            padding-bottom: 0.5rem; /* Space for the underline */
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;  /* Center the line */
+            transform: translateX(-50%);
+            width: 40%; /* Shorter underline */
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--accent);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        /* Info Cards, Accordions, and Other Components */
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* More subtle shadow */
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add box-shadow transition */
+        }
+        .card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); /* Increased shadow on hover */
+        }
+        .info-card .card-body {
+            padding: 2rem;
+        }
+        .accordion .card {
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .accordion .card-header {
+            background-color: var(--light);
+            padding: 1.5rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .accordion .card-header:not(.collapsed) {
+            background-color: #f0f0f0;
+        }
+        .accordion .card-body {
+            padding: 2rem;
+            border-left: 1px solid rgba(229, 229, 229, 0.7);
+            border-right: 1px solid rgba(229, 229, 229, 0.7);
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+        }
+        .accordion .btn-link {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding: 0;
+        }
+        .accordion .btn-link:hover,
+        .accordion .btn-link:not(.collapsed) {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .accordion .collapse-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .accordion .btn-link:not(.collapsed) + .collapse .collapse-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Redesigned Metrics Section */
+        #metrics {
+            background-color: var(--secondary);
+            padding: 6rem 0;
+            border-radius: 1rem;
+            margin-top: 6rem;
+        }
+        #metrics .metric-item {
+            text-align: center;
+            padding: 3rem;
+        }
+        #metrics .metric-item i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        #metrics .metric-item h3 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+        #metrics .metric-item p {
+            font-size: 1.1rem;
+            color: var(--accent);
+            line-height: 1.7;
+        }
+
+        /* Carousel Styles */
+        .carousel-item {
+            height: 500px;
+            background-color: #f0f0f0;
+            color: var(--dark);
+            text-align: center;
+            line-height: 500px;
+            font-size: 2.5rem;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+        }
+        .carousel-indicators li {
+            background-color: var(--accent);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            border-radius: 0.25rem;
+        }
+        .carousel-indicators li.active {
+            opacity: 1;
+            background-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--accent);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(229, 229, 229, 0.7);
+        }
+        footer h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        footer p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .social-icons a {
+            color: var(--primary);
+            margin: 0 0.75rem;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+        .social-icons a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Additional Styling */
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--accent);
+        }
+        .btn-custom {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15);
+        }
+        .btn-custom:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 6px 18px rgba(0, 113, 227, 0.2);
+            transform: translateY(-1px);
+        }
+        .btn-custom:active{
+           transform: translateY(0);
+           box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+        }
+
+        /* Table Design */
+        .table-responsive {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        .table {
+            background-color: var(--light);
+        }
+
+        .table thead th {
+            background-color: #f0f0f0;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 1.25rem;
+            border-bottom: 2px solid #ededed;
+            border-top: none;
+        }
+        .table td {
+            padding: 1.25rem;
+            color: var(--accent);
+            border-bottom: 1px solid #ededed;
+        }
+        .table th,
+        .table td {
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        .table tbody tr:last-child td{
+           border-bottom: none;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(247, 250, 252, 0.5);
+        }
+        /* Page specific styles */
+        #floaters-page #hero {
+            background-image: url('https://source.unsplash.com/1600x900/?floaters,eye');
+        }
+        #pvd-page #hero{
+           background-image: url('https://source.unsplash.com/1600x900/?pvd,retina');
+        }
+        #resources-page #hero{
+            background-image: url('https://source.unsplash.com/1600x900/?eye,tools');
+        }
+        #about-page #hero{
+            background-image: url('https://source.unsplash.com/1600x900/?eye,care');
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index5.html">Eye Care 360°</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index5.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="floaters.html">Floaters</a></li>
+                <li class="nav-item"><a class="nav-link" href="pvd.html">PVD &amp; Retinal Breaks</a></li>
+                <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Revolutionizing Eye Care</h1>
+        <p>Comprehensive, Evidence-Based Guidelines from the American Academy of Ophthalmology</p>
+        <a href="floaters.html" class="btn btn-custom btn-lg">Discover More</a>
+    </div>
+</section>
+<section id="overview">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Overview of Guidelines</h2>
+            <p>Your one-stop resource for advanced eye care practices, including floaters, PVD, retinal breaks, and lattice degeneration</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                This website is built to mirror the sleek, advanced style of top tech brands while providing in‑depth, evidence‑based information. From diagnostic protocols to treatment modalities, every detail is curated to empower clinicians and educate patients. Explore interactive modules, detailed accordions, and multimedia resources that break down every facet of eye care.
+            </p>
+        </div>
+    </div>
+</section>
+<section id="floaters" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Understanding Floaters</h2>
+            <p>An in‑depth look at vitreous floaters—their causes, symptoms, and treatment options</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">What Are Floaters?</h4>
+                        <p class="card-text">
+                            Floaters are tiny clumps of collagen or debris in the vitreous, casting shadows on the retina. They may be a normal part of aging or a sign of pathology.
+                        </p>
+                        <a href="floaters.html" class="btn btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Diagnosis &amp; Management</h4>
+                        <p class="card-text">
+                            Diagnosis includes comprehensive ocular exams, dilated fundus evaluation, and OCT imaging. Management options range from observation to surgical intervention.
+                        </p>
+                        <a href="floaters.html" class="btn btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="pvd">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Posterior Vitreous Detachment &amp; Retinal Breaks</h2>
+            <p>Understand the cascade from PVD to retinal breaks and lattice degeneration</p>
+        </div>
+        <div class="accordion" id="pvdAccordion">
+            <div class="card" data-aos="fade-up">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Pathophysiology <span class="collapse-icon">&#9660;</span>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#pvdAccordion">
+                    <div class="card-body">
+                        <p>
+                            Vitreous syneresis leads to posterior vitreous detachment (PVD), creating traction on the retina.
+                        </p>
+                        <h4>Key Processes:</h4>
+                        <ul>
+                            <li>Liquefaction of vitreous gel (synchysis)</li>
+                            <li>Separation of posterior hyaloid membrane</li>
+                            <li>Vitreoretinal adhesion disruption</li>
+                        </ul>
+                        <h4>Lattice Degeneration</h4>
+                        <p>
+                            Peripheral retinal thinning with abnormal vitreoretinal adhesion.
+                        </p>
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            High-risk features: White with/without pressure, retinal excavation, branching vessels
+                        </div>
+                        <a href="pvd.html" class="btn btn-custom mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Diagnosis <span class="collapse-icon">&#9660;</span>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#pvdAccordion">
+                    <div class="card-body">
+                        <h4>Clinical Examination</h4>
+                        <p>Key Findings:</p>
+                        <ul>
+                            <li>Weiss ring in acute PVD</li>
+                            <li>Pigment cells in the anterior vitreous</li>
+                            <li>Retinal tears (horseshoe vs. operculated)</li>
+                        </ul>
+                        <h4>Imaging:</h4>
+                        <ul>
+                            <li>B-scan ultrasonography for vitreous hemorrhage</li>
+                            <li>Optical coherence tomography (OCT)</li>
+                            <li>Wide-field fundus photography</li>
+                        </ul>
+                        <a href="pvd.html" class="btn btn-custom mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Treatment <span class="collapse-icon">&#9660;</span>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#pvdAccordion">
+                    <div class="card-body">
+                        <h4>Prophylactic Laser</h4>
+                        <ul>
+                            <li>Indicated for:
+                                <ul>
+                                    <li>Symptomatic breaks with subretinal fluid</li>
+                                    <li>Lattice degeneration in high-risk eyes</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h4>Surgical Options</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Procedure</th>
+                                    <th>Indication</th>
+                                    <th>Anatomical Success</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Pneumatic Retinopexy</td>
+                                    <td>Superior breaks &lt;90°</td>
+                                    <td>85-90%</td>
+                                </tr>
+                                <tr>
+                                    <td>Scleral Buckle</td>
+                                    <td>Multiple/large breaks</td>
+                                    <td>92-95%</td>
+                                </tr>
+                                <tr>
+                                    <td>Vitrectomy</td>
+                                    <td>Complex detachments</td>
+                                    <td>90-93%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="pvd.html" class="btn btn-custom mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="metrics">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Key Performance Metrics</h2>
+            <p>Tracking our progress and impact in advancing eye care</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="metric-item">
+                    <i class="fas fa-users"></i>
+                    <h3>1M+</h3>
+                    <p>Patients Benefited</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="metric-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>10k+</h3>
+                    <p>Successful Surgeries</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="metric-item">
+                    <i class="fas fa-percent"></i>
+                    <h3>95%</h3>
+                    <p>Positive Outcomes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Additional Resources</h2>
+            <p>Explore tools and information for both clinicians and patients</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">ICD-10 Coding Guide</h4>
+                        <p class="card-text">
+                            Accurate coding is crucial. Access our comprehensive guide for Posterior Vitreous Detachment, Retinal Breaks, and related conditions.
+                        </p>
+                        <a href="resources.html" class="btn btn-custom">View Guide</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Patient Education Tools</h4>
+                        <p class="card-text">
+                            Empower your patients with resources. We offer tools like symptom checkers, treatment simulators, and risk calculators.
+                        </p>
+                        <a href="resources.html" class="btn btn-custom">Explore Tools</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>About Us</h2>
+            <p>Dedicated to advancing eye care through research, education, and clinical practice guidelines.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                The American Academy of Ophthalmology is committed to protecting sight and empowering lives by serving as an advocate for patients and the public, leading ophthalmologists, and advancing the profession of ophthalmology.
+            </p>
+            <a href="about.html" class="btn btn-custom mt-3">Learn More</a>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Guideline Updates</h5>
+                <p>Next review: 2029</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>American Academy of Ophthalmology<br>
+                    P.O. Box 7424<br>
+                    San Francisco, CA 94120-7424</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <div class="social-icons">
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+    });
+    $(document).ready(function(){
+        $('.navbar-toggler').click(function(){
+            $(this).toggleClass('collapsed');
+        });
+        $('.accordion .btn-link').click(function(){
+             $(this).find('.collapse-icon').toggleClass('rotate-icon');
+        });
+    });
+</script>
+</body>
+</html>

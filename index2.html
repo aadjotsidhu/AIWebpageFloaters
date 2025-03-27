@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advanced Eye Care Guidelines</title>
+    <!-- Bootstrap CSS (v4.5) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- AOS Library CSS for scroll animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        /* Global Styles */
+        body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: #333;
+          background-color: #fff;
+          scroll-behavior: smooth;
+        }
+        /* Navbar Styles */
+        .navbar {
+          background-color: #000;
+          padding: 1rem 2rem;
+        }
+        .navbar-brand, .nav-link {
+          color: #fff !important;
+          font-weight: 600;
+        }
+        .nav-link:hover {
+          color: #aaa !important;
+        }
+        /* Hero Section */
+        #hero {
+          background: url('https://source.unsplash.com/1600x900/?eye,ophthalmology') no-repeat center center;
+          background-size: cover;
+          height: 100vh;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: #fff;
+        }
+        #hero::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+        #hero .hero-content {
+          position: relative;
+          z-index: 2;
+        }
+        #hero h1 {
+          font-size: 3.5rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+        #hero p {
+          font-size: 1.25rem;
+          margin-bottom: 2rem;
+        }
+        /* Section Headers */
+        .section-header {
+          margin: 80px 0 40px;
+          text-align: center;
+        }
+        .section-header h2 {
+          font-size: 2.75rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+        .section-header p {
+          font-size: 1.2rem;
+          color: #666;
+        }
+        /* Cards & Accordions */
+        .info-card {
+          border: none;
+          border-radius: 1rem;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          margin-bottom: 30px;
+          overflow: hidden;
+        }
+        .info-card .card-body {
+          padding: 2rem;
+        }
+        .accordion .card {
+          border: none;
+          margin-bottom: 1rem;
+          border-radius: 0.5rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .accordion .card-header {
+          background-color: #f8f9fa;
+          padding: 1rem 1.5rem;
+          cursor: pointer;
+        }
+        /* Carousel Styles */
+        .carousel-item {
+          height: 400px;
+          background-color: #ddd;
+          color: #333;
+          text-align: center;
+          line-height: 400px;
+          font-size: 2rem;
+        }
+        /* Footer */
+        footer {
+          background-color: #000;
+          color: #fff;
+          padding: 2rem 0;
+          text-align: center;
+        }
+        /* Additional Styling */
+        .section-content {
+          font-size: 1rem;
+          line-height: 1.8;
+        }
+        .btn-custom {
+          background-color: #000;
+          color: #fff;
+          border: none;
+          padding: 0.8rem 1.5rem;
+          border-radius: 0.3rem;
+          font-size: 1rem;
+          transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+          background-color: #444;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#hero">Eye Care 360°</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fas fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#floaters">Floaters</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pvd">PVD &amp; Retinal Breaks</a></li>
+                <li class="nav-item"><a class="nav-link" href="#metrics">Metrics</a></li>
+                <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="#detailed">Detailed Topics</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Revolutionizing Eye Care</h1>
+        <p>Comprehensive, Evidence-Based Guidelines from the American Academy of Ophthalmology</p>
+        <a href="#overview" class="btn btn-custom btn-lg">Discover More</a>
+    </div>
+</section>
+
+<!-- Overview Section -->
+<section id="overview">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Overview of Guidelines</h2>
+            <p>Your one-stop resource for advanced eye care practices, including floaters, PVD, retinal breaks, and lattice degeneration</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                This website is built to mirror the sleek, advanced style of top tech brands while providing in‑depth,
+                evidence‑based information. From diagnostic protocols to treatment modalities, every detail has been curated to
+                empower clinicians and educate patients. Explore interactive modules, detailed accordions, and multimedia resources
+                that break down every facet of eye care.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Floaters Section -->
+<section id="floaters" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Understanding Floaters</h2>
+            <p>An in‑depth look at vitreous floaters—their causes, symptoms, and treatment options</p>
+        </div>
+        <div class="row">
+            <!-- Left Card -->
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">What Are Floaters?</h4>
+                        <p class="card-text">
+                            Floaters are tiny clumps of collagen or other debris in the vitreous, casting shadows on the retina. They are often a natural part of aging, but can sometimes indicate pathology.
+                        </p>
+                        <button class="btn btn-custom" data-toggle="modal" data-target="#floatersModal1">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Card -->
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Diagnosis &amp; Management</h4>
+                        <p class="card-text">
+                            Diagnosis involves comprehensive ocular examinations, including dilated fundus exam and OCT imaging. Management may vary from watchful waiting to surgical intervention.
+                        </p>
+                        <button class="btn btn-custom" data-toggle="modal" data-target="#floatersModal2">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Floaters Detail 1 -->
+<div class="modal fade" id="floatersModal1" tabindex="-1" role="dialog" aria-labelledby="floatersModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="floatersModalLabel1" class="modal-title">In-Depth: What Are Floaters?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Floaters result from changes in the vitreous humor’s collagen structure. As the vitreous ages, it liquefies and its collagen fibers clump together, casting shadows on the retina. In some cases, floaters can be symptomatic of other ocular conditions. Detailed clinical studies have outlined their prevalence, correlation with age-related vitreous changes, and potential interventions.
+                </p>
+                <!-- Additional detailed content can be added here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Floaters Detail 2 -->
+<div class="modal fade" id="floatersModal2" tabindex="-1" role="dialog" aria-labelledby="floatersModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="floatersModalLabel2" class="modal-title">Diagnosis &amp; Management Strategies</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Diagnostic techniques include detailed slit-lamp examination, dilated fundus exam, and optical coherence tomography (OCT). Management strategies range from reassurance and monitoring to interventional procedures such as Nd:YAG laser vitreolysis or vitrectomy in severe cases.
+                </p>
+                <!-- More detailed guidelines and statistics can be added here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PVD & Retinal Breaks Section -->
+<section id="pvd">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Posterior Vitreous Detachment &amp; Retinal Breaks</h2>
+            <p>Understanding the cascade from PVD to retinal breaks and lattice degeneration</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">What is PVD?</h4>
+                        <p class="card-text">
+                            Posterior Vitreous Detachment (PVD) is the separation of the vitreous from the retina, a common process that increases with age but can be accelerated by trauma or myopia.
+                        </p>
+                        <button class="btn btn-custom" data-toggle="collapse" data-target="#pvdCollapse1">Read More</button>
+                        <div id="pvdCollapse1" class="collapse mt-3">
+                            <p>
+                                Detailed research shows that early detection of PVD can significantly reduce the risk of subsequent retinal tears. Techniques such as OCT and ultrasonography are essential in evaluating the extent of vitreous detachment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Retinal Breaks &amp; Lattice Degeneration</h4>
+                        <p class="card-text">
+                            Retinal breaks may develop as a consequence of vitreoretinal traction during PVD. Lattice degeneration is a related condition marked by thinning of the retina and predisposition to tears.
+                        </p>
+                        <button class="btn btn-custom" data-toggle="collapse" data-target="#pvdCollapse2">Read More</button>
+                        <div id="pvdCollapse2" class="collapse mt-3">
+                            <p>
+                                The guidelines recommend immediate intervention for symptomatic tears using laser photocoagulation or cryotherapy. Lattice degeneration management focuses on regular monitoring, especially in high-risk patients.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Metrics Section with Carousel -->
+<section id="metrics" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Practice Metrics &amp; Outcomes</h2>
+            <p>Data-driven focus points to ensure quality and precision in eye care</p>
+        </div>
+        <div id="metricsCarousel" class="carousel slide" data-ride="carousel" data-aos="zoom-in">
+            <ol class="carousel-indicators">
+                <li data-target="#metricsCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#metricsCarousel" data-slide-to="1"></li>
+                <li data-target="#metricsCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-center">
+                            <h3>Timeliness of Care</h3>
+                            <p>Quick response protocols ensure follow-up within 4-6 weeks for certain conditions and immediate intervention for acute cases.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-center">
+                            <h3>Diagnostic Precision</h3>
+                            <p>Advanced imaging techniques and thorough examinations support early detection of retinal pathology.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-center">
+                            <h3>Effective Treatment</h3>
+                            <p>Evidence-based interventions like laser photocoagulation are tailored to secure retinal breaks and preserve vision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#metricsCarousel" role="button" data-slide="prev">
+                <span class="fas fa-chevron-left fa-2x" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#metricsCarousel" role="button" data-slide="next">
+                <span class="fas fa-chevron-right fa-2x" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Resources Section with Accordion -->
+<section id="resources">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Patient &amp; Provider Resources</h2>
+            <p>Comprehensive educational materials and clinical protocols</p>
+        </div>
+        <div id="resourcesAccordion" class="accordion" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+                <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne">
+                    <h5 class="mb-0">For Providers: Detailed Clinical Protocols</h5>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#resourcesAccordion">
+                    <div class="card-body">
+                        <p>
+                            Access step‑by‑step guidelines for diagnosing and treating floaters, PVD, and retinal breaks. This includes examination techniques, imaging protocols (OCT, B-scan), and treatment recommendations such as laser photocoagulation and cryotherapy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo">
+                    <h5 class="mb-0">For Patients: Educational Materials</h5>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#resourcesAccordion">
+                    <div class="card-body">
+                        <p>
+                            Learn about the conditions that affect your vision, including the science behind floaters, the signs of PVD, and why early detection is critical. Interactive FAQs and video content help explain these complex topics in simple terms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detailed Topics Section with Nested Accordions -->
+<section id="detailed" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>In-Depth Topics &amp; Nuances</h2>
+            <p>Explore every detail—from subtle diagnostic cues to advanced treatment rationales</p>
+        </div>
+        <div class="accordion" id="detailedAccordion" data-aos="fade-up" data-aos-delay="150">
+            <!-- Topic 1 -->
+            <div class="card">
+                <div class="card-header" id="detailedHeadingOne" data-toggle="collapse" data-target="#detailedCollapseOne">
+                    <h5 class="mb-0">Subtle Diagnostic Signs in PVD</h5>
+                </div>
+                <div id="detailedCollapseOne" class="collapse" data-parent="#detailedAccordion">
+                    <div class="card-body">
+                        <p>
+                            Learn about the early signs of PVD, including subtle vitreoretinal interface changes that may be visible on OCT or detected during careful scleral depression. This section details the progression of symptoms and clinical markers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Topic 2 -->
+            <div class="card">
+                <div class="card-header" id="detailedHeadingTwo" data-toggle="collapse" data-target="#detailedCollapseTwo">
+                    <h5 class="mb-0">Advanced Treatment Modalities</h5>
+                </div>
+                <div id="detailedCollapseTwo" class="collapse" data-parent="#detailedAccordion">
+                    <div class="card-body">
+                        <p>
+                            An exploration of current treatment options including the indications for vitrectomy versus laser interventions, as well as emerging therapies in vitreolysis. Evidence-based guidelines and comparative outcomes are discussed in detail.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Topic 3 -->
+            <div class="card">
+                <div class="card-header" id="detailedHeadingThree" data-toggle="collapse" data-target="#detailedCollapseThree">
+                    <h5 class="mb-0">Quality Metrics and Continuous Improvement</h5>
+                </div>
+                <div id="detailedCollapseThree" class="collapse" data-parent="#detailedAccordion">
+                    <div class="card-body">
+                        <p>
+                            Understand the metrics used to evaluate clinical performance including timeliness of care, diagnostic accuracy, and patient outcome measures. This section also covers strategies for continuous quality improvement in ophthalmic practice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>About Eye Care 360°</h2>
+            <p>Our mission, vision, and commitment to advanced eye care</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                Eye Care 360° is dedicated to disseminating the most comprehensive, evidence‑based guidelines in ophthalmology. Derived from the American Academy of Ophthalmology’s Preferred Practice Pattern, our platform is designed for both clinicians and patients.
+            </p>
+            <p>
+                We believe that every detail matters—from the smallest diagnostic cue to the most advanced treatment protocol. Our mission is to provide a modern, interactive resource that empowers healthcare professionals to deliver superior eye care and helps patients understand every aspect of their condition.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Eye Care 360°. All rights reserved.</p>
+        <p>
+            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        </p>
+    </div>
+</footer>
+
+<!-- jQuery, Popper.js, Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- AOS Library JS for animations -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Initialize AOS for scroll animations
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+</script>
+</body>
+</html>

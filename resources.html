@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resources - Advanced Eye Care</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1d1d1f;
+        background-color: #fff;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        line-height: 1.7;
+    }
+    :root {
+        --primary: #0071e3;
+        --primary-dark: #004990;
+        --secondary: #f5f5f7;
+        --accent: #8e8e93;
+        --dark: #1d1d1f;
+        --light: #ffffff;
+    }
+    .container {
+        max-width: 1200px;
+    }
+    /* Navbar Styles */
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+    }
+    .navbar-brand {
+        color: var(--dark) !important;
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+    .navbar-brand:hover {
+        color: var(--primary) !important;
+    }
+    .nav-link {
+        color: var(--dark) !important;
+        font-weight: 500;
+        padding: 0.75rem 1.2rem;
+        font-size: 1rem;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--primary) !important;
+        background-color: transparent;
+    }
+    .navbar-toggler {
+        border: none;
+        padding: 0.5rem;
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+        background-size: cover;
+        width: 24px;
+        height: 24px;
+    }
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 113, 227, 0.25);
+    }
+    .nav-item {
+        margin-right: 0.5rem;
+    }
+    /* Hero Section */
+    #hero {
+        background: url('https://source.unsplash.com/1600x900/?eye,health') no-repeat center center;
+        background-size: cover;
+        height: 85vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--dark);
+    }
+    #hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    #hero .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    #hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        color: var(--dark);
+    }
+    #hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        color: var(--dark);
+    }
+    #hero .btn-custom {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+    /* Section Headers */
+    .section-header {
+        margin: 6rem 0 4rem;
+        text-align: center;
+    }
+    .section-header h2 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--dark);
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+    }
+    .section-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 4px;
+        background-color: var(--primary);
+    }
+    .section-header p {
+        font-size: 1.15rem;
+        color: var(--accent);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    /* Info Cards, Accordions, and Other Components */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        margin-bottom: 2rem;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+    .info-card .card-body {
+        padding: 2rem;
+    }
+    .accordion .card {
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .accordion .card-header {
+        background-color: var(--light);
+        padding: 1.5rem;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+    }
+    .accordion .card-header:not(.collapsed) {
+        background-color: #f0f0f0;
+    }
+    .accordion .card-body {
+        padding: 2rem;
+        border-left: 1px solid rgba(229, 229, 229, 0.7);
+        border-right: 1px solid rgba(229, 229, 229, 0.7);
+        border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+        border-bottom-left-radius: 0.75rem;
+        border-bottom-right-radius: 0.75rem;
+    }
+    .accordion .btn-link {
+        color: var(--dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        padding: 0;
+    }
+    .accordion .btn-link:hover,
+    .accordion .btn-link:not(.collapsed) {
+        color: var(--primary);
+        text-decoration: none;
+    }
+    .accordion .collapse-icon {
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+        display: inline-block;
+    }
+    .accordion .btn-link:not(.collapsed) + .collapse .collapse-icon {
+        transform: rotate(180deg);
+    }
+    /* Redesigned Metrics Section */
+    #metrics {
+        background-color: var(--secondary);
+        padding: 6rem 0;
+        border-radius: 1rem;
+        margin-top: 6rem;
+    }
+    #metrics .metric-item {
+        text-align: center;
+        padding: 3rem;
+    }
+    #metrics .metric-item i {
+        font-size: 4rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+    #metrics .metric-item h3 {
+        font-size: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--dark);
+        letter-spacing: -0.02em;
+    }
+    #metrics .metric-item p {
+        font-size: 1.1rem;
+        color: var(--accent);
+        line-height: 1.7;
+    }
+    /* Carousel Styles */
+    .carousel-item {
+        height: 500px;
+        background-color: #f0f0f0;
+        color: var(--dark);
+        text-align: center;
+        line-height: 500px;
+        font-size: 2.5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        opacity: 1;
+    }
+    .carousel-indicators li {
+        background-color: var(--accent);
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+        border-radius: 0.25rem;
+    }
+    .carousel-indicators li.active {
+        opacity: 1;
+        background-color: var(--primary);
+    }
+    /* Footer */
+    footer {
+        background-color: var(--secondary);
+        color: var(--accent);
+        padding: 4rem 0;
+        text-align: center;
+        margin-top: 6rem;
+        border-top: 1px solid rgba(229, 229, 229, 0.7);
+    }
+    footer h5 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+    }
+    footer p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--accent);
+    }
+    .social-icons a {
+        color: var(--primary);
+        margin: 0 0.75rem;
+        font-size: 1.5rem;
+        transition: color 0.2s ease;
+    }
+    .social-icons a:hover {
+        color: var(--primary-dark);
+    }
+    /* Additional Styling */
+    .section-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--accent);
+    }
+    .btn-custom {
+        background-color: var(--primary);
+        color: var(--light);
+        border: none;
+        padding: 0.8rem 1.8rem;
+        border-radius: 0.5rem;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15);
+    }
+    .btn-custom:hover {
+        background-color: var(--primary-dark);
+        box-shadow: 0 6px 18px rgba(0, 113, 227, 0.2);
+        transform: translateY(-1px);
+    }
+     .btn-custom:active{
+       transform: translateY(0);
+       box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+    }
+    /* Table Design */
+    .table-responsive {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        margin-bottom: 2rem;
+    }
+    .table {
+        background-color: var(--light);
+    }
+    .table thead th {
+        background-color: #f0f0f0;
+        color: var(--dark);
+        font-weight: 600;
+        padding: 1.25rem;
+        border-bottom: 2px solid #ededed;
+        border-top: none;
+    }
+    .table td {
+        padding: 1.25rem;
+        color: var(--accent);
+        border-bottom: 1px solid #ededed;
+    }
+    .table th,
+    .table td {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+    .table tbody tr:last-child td{
+       border-bottom: none;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(247, 250, 252, 0.5);
+    }
+    /* Page specific styles */
+    #resources-page #hero {
+        background-image: url('https://source.unsplash.com/1600x900/?eye,health');
+    }
+    #resources-page .section-header h2::after{
+        background-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Eye Care 360°</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="floaters.html">Floaters</a></li>
+        <li class="nav-item"><a class="nav-link" href="pvd.html">PVD &amp; Retinal Breaks</a></li>
+        <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section id="hero">
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Resources</h1>
+    <p>Helpful information and links to learn more about eye health.</p>
+  </div>
+</section>
+<section id="educational-resources">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Educational Resources</h2>
+      <p>Explore these resources to expand your knowledge about eye conditions and treatments.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="info-card">
+          <div class="card-body">
+            <h3 class="card-title">American Academy of Ophthalmology (AAO)</h3>
+            <p class="card-text">
+              The AAO is the world's largest association of ophthalmologists.  Their website provides comprehensive information on eye diseases,
+              conditions, and treatments.
+            </p>
+            <a href="https://www.aao.org/" target="_blank" class="btn btn-custom">Visit Website</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="info-card">
+          <div class="card-body">
+            <h3 class="card-title">National Eye Institute (NEI)</h3>
+            <p class="card-text">
+              The NEI, part of the National Institutes of Health, conducts and supports research on eye diseases and vision disorders.
+              Their website offers patient education materials and information on clinical trials.
+            </p>
+            <a href="https://www.nei.nih.gov/" target="_blank" class="btn btn-custom">Visit Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="support-resources">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Support Resources</h2>
+      <p>Find organizations and communities that offer support and assistance for individuals with eye conditions.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="info-card">
+          <div class="card-body">
+            <h3 class="card-title">The Foundation Fighting Blindness</h3>
+            <p class="card-text">
+              This organization provides research funding, education, and advocacy for people affected by retinal degenerative diseases.
+            </p>
+            <a href="https://www.fightingblindness.org/" target="_blank" class="btn btn-custom">Visit Website</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="info-card">
+          <div class="card-body">
+            <h3 class="card-title">American Foundation for the Blind (AFB)</h3>
+            <p class="card-text">
+              The AFB provides resources and services for people who are blind or visually impaired, promoting independence and equal opportunities.
+            </p>
+            <a href="https://www.afb.org/" target="_blank" class="btn btn-custom">Visit Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="additional-resources">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Additional Resources</h2>
+      <p>Explore more resources related to eye care and related topics.</p>
+    </div>
+    <div class="accordion" id="resourcesAccordion" data-aos="fade-up" data-aos-delay="100">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              General Eye Health
+              <span class="collapse-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#resourcesAccordion">
+          <div class="card-body">
+            <ul>
+              <li><a href="https://www.webmd.com/eye-health/" target="_blank">WebMD Eye Health</a> - Information on various eye conditions and treatments.</li>
+              <li><a href="https://www.mayoclinic.org/diseases-conditions/eye-diseases/symptoms-causes/syc-20366097" target="_blank">Mayo Clinic - Eye Diseases</a> - Overview of symptoms, causes, and treatments of eye diseases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Information on Floaters and PVD
+              <span class="collapse-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#resourcesAccordion">
+          <div class="card-body">
+            <ul>
+              <li><a href="https://www.allaboutvision.com/conditions/floaters.htm" target="_blank">All About Vision - Eye Floaters</a> -  Information about causes, symptoms and treatment of floaters.</li>
+              <li><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/posterior-vitreous-detachment-pvd" target="_blank">Johns Hopkins Medicine - Posterior Vitreous Detachment (PVD)</a> - Information on PVD.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Retinal Health
+              <span class="collapse-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#resourcesAccordion">
+          <div class="card-body">
+            <ul>
+              <li><a href="https://www.asrs.org/" target="_blank">American Society of Retina Specialists (ASRS)</a> - Information on retinal conditions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>About Eye Care 360°</h5>
+        <p>
+          Comprehensive resource for understanding and managing vitreoretinal conditions.  Our mission is to provide accurate,
+          reliable information and support to patients and their families.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h5>Connect With Us</h5>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <p class="mt-4">
+      &copy; 2023 Eye Care 360°. All rights reserved.  <a href="privacy.html" class="text-primary">Privacy Policy</a> | <a href="terms.html" class="text-primary">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+  });
+  $(document).ready(function () {
+      $('.accordion').on('show.bs.collapse', function (e) {
+          $(e.target).prev('.card-header').find('.collapse-icon').addClass('rotate-180');
+      }).on('hide.bs.collapse', function (e) {
+          $(e.target).prev('.card-header').find('.collapse-icon').removeClass('rotate-180');
+      });
+  });
+</script>
+</body>
+</html>

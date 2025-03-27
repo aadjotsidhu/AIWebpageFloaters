@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Understanding Floaters - Advanced Eye Care</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1d1d1f;
+            background-color: #fff;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #004990;
+            --secondary: #f5f5f7;
+            --accent: #8e8e93;
+            --dark: #1d1d1f;
+            --light: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+        }
+        .navbar-brand {
+            color: var(--dark) !important;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+        .navbar-brand:hover {
+            color: var(--primary) !important;
+        }
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 0.75rem 1.2rem;
+            font-size: 1rem;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+            background-color: transparent;
+        }
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+            background-size: cover;
+            width: 24px;
+            height: 24px;
+        }
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 113, 227, 0.25);
+        }
+        .nav-item {
+            margin-right: 0.5rem;
+        }
+        /* Hero Section */
+        #hero {
+            background: url('https://source.unsplash.com/1600x900/?floaters,eye') no-repeat center center;
+            background-size: cover;
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark);
+        }
+        #hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: var(--dark);
+        }
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+        }
+        #hero .btn-custom {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+        /* Section Headers */
+        .section-header {
+            margin: 6rem 0 4rem;
+            text-align: center;
+        }
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--accent);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        /* Info Cards, Accordions, and Other Components */
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        .info-card .card-body {
+            padding: 2rem;
+        }
+        .accordion .card {
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .accordion .card-header {
+            background-color: var(--light);
+            padding: 1.5rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .accordion .card-header:not(.collapsed) {
+            background-color: #f0f0f0;
+        }
+        .accordion .card-body {
+            padding: 2rem;
+            border-left: 1px solid rgba(229, 229, 229, 0.7);
+            border-right: 1px solid rgba(229, 229, 229, 0.7);
+            border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+        }
+        .accordion .btn-link {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding: 0;
+        }
+        .accordion .btn-link:hover,
+        .accordion .btn-link:not(.collapsed) {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .accordion .collapse-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .accordion .btn-link:not(.collapsed) + .collapse .collapse-icon {
+            transform: rotate(180deg);
+        }
+        /* Redesigned Metrics Section */
+        #metrics {
+            background-color: var(--secondary);
+            padding: 6rem 0;
+            border-radius: 1rem;
+            margin-top: 6rem;
+        }
+        #metrics .metric-item {
+            text-align: center;
+            padding: 3rem;
+        }
+        #metrics .metric-item i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        #metrics .metric-item h3 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+        #metrics .metric-item p {
+            font-size: 1.1rem;
+            color: var(--accent);
+            line-height: 1.7;
+        }
+        /* Carousel Styles */
+        .carousel-item {
+            height: 500px;
+            background-color: #f0f0f0;
+            color: var(--dark);
+            text-align: center;
+            line-height: 500px;
+            font-size: 2.5rem;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+        }
+        .carousel-indicators li {
+            background-color: var(--accent);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            border-radius: 0.25rem;
+        }
+        .carousel-indicators li.active {
+            opacity: 1;
+            background-color: var(--primary);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--accent);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(229, 229, 229, 0.7);
+        }
+        footer h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        footer p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .social-icons a {
+            color: var(--primary);
+            margin: 0 0.75rem;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+        .social-icons a:hover {
+            color: var(--primary-dark);
+        }
+        /* Additional Styling */
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--accent);
+        }
+        .btn-custom {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15);
+        }
+        .btn-custom:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 6px 18px rgba(0, 113, 227, 0.2);
+            transform: translateY(-1px);
+        }
+         .btn-custom:active{
+           transform: translateY(0);
+           box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+        }
+        /* Table Design */
+        .table-responsive {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        .table {
+            background-color: var(--light);
+        }
+        .table thead th {
+            background-color: #f0f0f0;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 1.25rem;
+            border-bottom: 2px solid #ededed;
+            border-top: none;
+        }
+        .table td {
+            padding: 1.25rem;
+            color: var(--accent);
+            border-bottom: 1px solid #ededed;
+        }
+        .table th,
+        .table td {
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        .table tbody tr:last-child td{
+           border-bottom: none;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(247, 250, 252, 0.5);
+        }
+        /* Page specific styles */
+        #floaters-page #hero {
+            background-image: url('https://source.unsplash.com/1600x900/?floaters,eye');
+        }
+        #floaters-page .section-header h2::after{
+            background-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Eye Care 360°</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="floaters.html">Floaters</a></li>
+                <li class="nav-item"><a class="nav-link" href="pvd.html">PVD &amp; Retinal Breaks</a></li>
+                <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Understanding Floaters</h1>
+        <p>An in‑depth look at vitreous floaters—their causes, symptoms, and treatment options</p>
+    </div>
+</section>
+<section id="floaters-intro">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>What are Floaters?</h2>
+            <p>Get a comprehensive understanding of the nature and causes of vitreous floaters.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                Floaters are small, moving spots that appear in your field of vision. They can look like dark specks, strings, or cobwebs.  Most floaters are caused by age-related changes in the vitreous, a gel-like substance that fills the inside of your eye.  As you get older, the vitreous becomes more liquid, and microscopic fibers within it can clump together, casting shadows on your retina.
+            </p>
+            <h4>Common Symptoms</h4>
+            <ul class="list-unstyled">
+                <li class="media my-3">
+                    <i class="fas fa-check-circle mr-2 text-primary"></i>
+                    <div class="media-body">
+                        Seeing small specks or spots that drift across your vision
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-check-circle mr-2 text-primary"></i>
+                    <div class="media-body">
+                        Noticing the spots move when you move your eyes
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-check-circle mr-2 text-primary"></i>
+                    <div class="media-body">
+                        Seeing the floaters more clearly when looking at a bright background, such as a blue sky or a white wall
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="floaters-causes" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Causes of Floaters</h2>
+            <p>Explore the various factors that contribute to the development of floaters.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                While most floaters are benign, it's important to understand the potential causes:
+            </p>
+            <ul class="list-unstyled">
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Aging:</strong> The most common cause, as the vitreous changes over time.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Posterior Vitreous Detachment (PVD):</strong>  A condition where the vitreous separates from the retina.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Eye Trauma or Surgery:</strong> Can sometimes lead to increased floaters.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Inflammation:</strong>  Conditions like uveitis can cause floaters.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Retinal Tears or Detachment:</strong>  These are serious conditions that can cause a sudden increase in floaters.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-arrow-right mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Other Causes:</strong>  Less common causes include diabetes, and deposits in the eye.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="floaters-diagnosis">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Diagnosis of Floaters</h2>
+            <p>Learn about the methods used to diagnose and evaluate floaters.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                A comprehensive eye exam is crucial for diagnosing floaters and ruling out any serious underlying conditions.
+            </p>
+            <h4>Diagnostic Procedures</h4>
+            <ul class="list-unstyled">
+                <li class="media my-3">
+                    <i class="fas fa-eye mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Visual Acuity Test:</strong> To assess your overall vision.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-eye mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Slit-Lamp Examination:</strong>  A detailed examination of the front of your eye.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-eye mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Dilated Fundus Examination:</strong>  Eye drops are used to widen your pupil, allowing the doctor to see the back of your eye (retina and vitreous) in detail.  This is the most important part of the exam for evaluating floaters.
+                    </div>
+                </li>
+                <li class="media my-3">
+                    <i class="fas fa-eye mr-2 text-primary"></i>
+                    <div class="media-body">
+                        <strong>Optical Coherence Tomography (OCT):</strong> An imaging technique that provides detailed cross-sectional views of the retina and vitreous.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="floaters-treatment" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Treatment Options</h2>
+            <p>Explore the available treatment options for floaters, ranging from observation to surgical intervention.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                Most floaters do not require treatment. However, if they are significantly affecting your vision, your ophthalmologist may recommend one of the following:
+            </p>
+            <h4>Treatment Options</h4>
+            <div class="accordion" id="treatmentAccordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Observation <span class="collapse-icon">&#9660;</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#treatmentAccordion">
+                        <div class="card-body">
+                            <p>
+                                In many cases, floaters become less noticeable over time as the brain adapts to them.  Your ophthalmologist will monitor your condition with regular eye exams.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                YAG Laser Vitreolysis <span class="collapse-icon">&#9660;</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#treatmentAccordion">
+                        <div class="card-body">
+                            <p>
+                                A laser is used to break up large floaters, making them less noticeable.  This procedure is not suitable for all types of floaters and carries some risks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Vitrectomy <span class="collapse-icon">&#9660;</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#treatmentAccordion">
+                        <div class="card-body">
+                            <p>
+                                A surgical procedure to remove the vitreous gel and replace it with a saline solution.  This is typically reserved for severe cases where floaters significantly impair vision and other treatments are not suitable.  Vitrectomy carries significant risks, including retinal detachment, cataract, and infection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="floaters-when-to-worry">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>When to Worry About Floaters</h2>
+            <p>Recognizing the signs and symptoms that require immediate medical attention.</p>
+        </div>
+        <div class="section-content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+                While most floaters are harmless, a sudden increase in floaters, especially when accompanied by other symptoms, can indicate a serious eye condition that requires immediate attention.
+            </p>
+            <h4>Seek Immediate Medical Attention If You Experience:</h4>
+            <ul class="list-unstyled">
+                <li class="media my-3 text-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div class="media-body">
+                        A sudden increase in the number of floaters
+                    </div>
+                </li>
+                <li class="media my-3 text-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div class="media-body">
+                        Flashes of light in the same eye as the floaters
+                    </div>
+                </li>
+                <li class="media my-3 text-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div class="media-body">
+                        A shadow or curtain-like blockage in your vision
+                    </div>
+                </li>
+                <li class="media my-3 text-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div class="media-body">
+                        Sudden loss of vision
+                    </div>
+                </li>
+                <li class="media my-3 text-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <div class="media-body">
+                        Eye pain
+                    </div>
+                </li>
+            </ul>
+            <p>
+                These symptoms may indicate a retinal tear or detachment, which can lead to permanent vision loss if not treated promptly.
+            </p>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Guideline Updates</h5>
+                <p>Next review: 2029</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>American Academy of Ophthalmology<br>
+                    P.O. Box 7424<br>
+                    San Francisco, CA 94120-7424</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <div class="social-icons">
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+    });
+     $(document).ready(function(){
+        $('.navbar-toggler').click(function(){
+            $(this).toggleClass('collapsed');
+        });
+        $('.accordion .btn-link').click(function(){
+             $(this).find('.collapse-icon').toggleClass('rotate-icon');
+        });
+    });
+</script>
+</body>
+</html>
